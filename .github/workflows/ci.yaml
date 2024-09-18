@@ -1,0 +1,22 @@
+name: Golang build
+
+on:
+  # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+  push:
+    branches:
+      - '**'
+
+# These variables can be reused in the build steps
+env:
+  DOCKER_REPOSITORY: tourna
+  DOCKER_IMAGE: aelm-workshop-23
+  GOLANG_VERSION: 1.21.x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Code Build steps
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go ${{ env.GOLANG_VERSION }}
+        uses: actions/setup-go@v4
